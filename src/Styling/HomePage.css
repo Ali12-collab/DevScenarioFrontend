@@ -1,0 +1,59 @@
+
+:root {
+    --font-family: 'Playfair Display';
+    --font-secondary: 'Dancing Script';
+    --font-size: 1rem;
+    --color-black: #000;
+    --color-white: #fff;
+    --color-hover: #2ECC71; /* Hover color */
+    --color-border: #333;
+  }
+  
+.landing-page {
+    height: 100vh;
+    background-image: url('../Assets/bg.svg'); /* Replace with your actual image URL */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+  }
+  
+  .landing-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+  }
+  
+  .landing-content {
+    
+    position: relative;
+    z-index: 1;  /* Ensure content is above the overlay */
+  }
+  
+  .landing-title {
+    font-family: var(--font-family);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .landing-description {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  

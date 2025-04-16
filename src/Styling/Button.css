@@ -1,0 +1,123 @@
+/* General Reset and Button Base Styles */
+button {
+    all: unset; /* Remove browser defaults */
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  
+  /* Button Styles */
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px; /* Moderate padding for balance */
+    border-radius: 8px; /* Rounded corners for a clean, modern look */
+    font-size: 1rem;
+    font-weight: 600; /* Medium weight for good legibility */
+    text-align: center;
+    position: relative;
+    border: 1px solid transparent; /* Border to define edges */
+    transition: all 0.3s ease; /* Smooth transitions for color and shadow changes */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Disabled Button State */
+  .button:disabled {
+    background-color: #ccc; /* Light grey for disabled state */
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  /* Button Text and Icon */
+  .button-icon {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .button-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: inherit; /* Color inherited from the button color */
+  }
+  
+  /* Default Hover State */
+  .button:hover:not(:disabled) {
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+  }
+  
+  /* Active Button State */
+  .button:active {
+    transform: translateY(2px); /* Slightly pressed effect */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Stronger shadow for active state */
+  }
+  
+  /* Button Color Classes (To be defined per button type) */
+  
+  /* Primary Button */
+  .button.primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Secondary Button */
+  .button.secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  /* Success Button */
+  .button.success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  /* Danger Button */
+  .button.danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  /* Warning Button */
+  .button.warning {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  /* Info Button */
+  .button.info {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  /* Light Button */
+  .button.light {
+    background-color: #f8f9fa;
+    color: #343a40;
+    border: 1px solid #dcdfe2;
+  }
+  
+  /* Dark Button */
+  .button.dark {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  /* Custom Button Color Class (used for dynamically added classes) */
+  .button.custom {
+    background-color: inherit;
+    color: inherit;
+    border: 1px solid;
+  }
+  
+  /* Focused Button State (For Accessibility) */
+  .button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4); /* Focus outline */
+  }
+  
+  

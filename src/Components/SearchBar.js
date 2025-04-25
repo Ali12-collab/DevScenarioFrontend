@@ -1,52 +1,63 @@
-// ✅ src/Components/SearchBar.js
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 import '../Styling/SearchBar.css';
 
-const SearchBar = ({ placeholder = 'Search...', data = [], onSelect }) => {
-  const [input, setInput] = useState('');
+const SearchBar = ({ data = [], searchFields = [], onSearch, placeholder = 'Search...' }) => {
+  const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  const [showDropdown, setShowDropdown] = useState(false);
 
+  // Build filtered suggestions based on dynamic fields
   useEffect(() => {
-    if (input.trim() === '') {
+    if (!inputValue) {
       setSuggestions([]);
-      setShowDropdown(false);
       return;
     }
 
-    const filtered = data.filter(item =>
-      item.toLowerCase().includes(input.toLowerCase())
-    );
-    setSuggestions(filtered);
-    setShowDropdown(true);
-  }, [input, data]);
+    const lowerInput = inputValue.toLowerCase();
 
-  const handleSelect = (value) => {
-    setInput(value);
-    setSuggestions([]);
-    setShowDropdown(false);
-    if (onSelect) onSelect(value);
+    const matchedItems = data.filter((item) =>
+      searchFields.some((field) => {
+        const value = item[field];
+        return value && value.toLowerCase().includes(lowerInput);
+      })
+    );
+
+    // Remove duplicates and map to react-select format
+    const uniqueLabels = [...new Set(
+      matchedItems.map((item) => {
+        for (const field of searchFields) {
+          if (item[field]?.toLowerCase().includes(lowerInput)) {
+            return item[field];
+          }
+        }
+        return null;
+      }).filter(Boolean)
+    )];
+
+    setSuggestions(uniqueLabels.map((label) => ({ label, value: label })));
+  }, [inputValue, data, searchFields]);
+
+  const handleInputChange = (value) => {
+    setInputValue(value);
+  };
+
+  const handleSelectChange = (selected) => {
+    const value = selected ? selected.label : '';
+    setInputValue(value);
+    onSearch(value);
   };
 
   return (
     <div className="search-bar-container">
-      <input
-        type="text"
-        className="search-input"
+      <Select
+        value={inputValue ? { label: inputValue, value: inputValue } : null}
+        onChange={handleSelectChange}
+        onInputChange={handleInputChange}
+        options={suggestions}
+        isClearable
         placeholder={placeholder}
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onFocus={() => input && setShowDropdown(true)}
+        noOptionsMessage={() => 'No matching results'}
       />
-      {showDropdown && suggestions.length > 0 && (
-        <ul className="suggestions-list">
-          {suggestions.map((suggestion, index) => (
-            <li key={index} onClick={() => handleSelect(suggestion)}>
-              {suggestion}
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 };

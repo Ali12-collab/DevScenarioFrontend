@@ -6,6 +6,8 @@ import LoadingSpinner from '../Components/LoadingSpinner';
 import '../Styling/EditApplication.css';
 import Popup from '../Components/Popup';
 import '../Styling/Popup.css';
+import Swal from 'sweetalert2';
+
 
 const EditApplication = () => {
   const { id } = useParams();
@@ -40,17 +42,24 @@ const EditApplication = () => {
     e.preventDefault();
     try {
       await updateApplication(id, formValues);
-  
-      // Show a confirmation popup
-      alert('✅ Application updated successfully!');
-  
-      // Navigate after confirmation
-      navigate('/applications');
+      await Swal.fire({
+        title: 'Updated!',
+        text: 'Application updated successfully.',
+        icon: 'success',
+        confirmButtonColor: '#2563eb',
+      });
+      // navigate('/applications');
     } catch (error) {
       console.error('Error updating application:', error);
-      alert('❌ Something went wrong while updating.');
+      Swal.fire({
+        title: 'Error!',
+        text: 'Something went wrong while updating the application.',
+        icon: 'error',
+        confirmButtonColor: '#d33',
+      });
     }
   };
+  
   
 
   if (loading) return <LoadingSpinner fullPage />;

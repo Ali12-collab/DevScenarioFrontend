@@ -92,9 +92,51 @@ h1, h2, h3 {
 }
 /* Pagination Button - Purple */
 .pagination-btn {
-  background-color: #9c27b0; /* Random Color: Purple */
-  color: white;
+  width: 130px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
+
+.pagination-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.pagination-btn:hover::after {
+  left: 120%;
+}
+
+.pagination-btn:hover {
+  background: linear-gradient(135deg, #1e40af, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(30, 64, 175, 0.25);
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  color: #ffffff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 
 /* Submit Button - Blue */
 .button.submit-button {
@@ -198,9 +240,10 @@ h1, h2, h3 {
 }
 
 .pagination span {
-  font-size: 1rem;
-  margin: 0 10px;
+  font-weight: 500;
 }
+
+
 
 .pagination-btn {
   padding: 10px 20px;
@@ -326,13 +369,123 @@ button[type="submit"]:hover:not(:disabled) {
   }
 }
 
-/* Media Queries for Responsiveness */
+/* ============ Responsive ============ */
+@media (max-width: 1024px) {
+  .apps-page-container {
+    width: 92%;
+    padding: 20px;
+  }
+
+  .applications-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .applications-table th,
+  .applications-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+}
 @media (max-width: 768px) {
   .apps-page-container {
-    width: 95%;
+    width: 96%;
+    margin: 24px auto;
+    padding: 16px;
+  }
+
+  .view-toggle,
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
 
   .applications-grid {
     grid-template-columns: 1fr;
+  }
+
+  .applications-table {
+    font-size: 0.85rem;
+  }
+
+  /* Stack table rows as cards on smaller devices */
+  .applications-table thead {
+    display: none;
+  }
+
+  .applications-table tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    overflow: hidden;
+  }
+
+  .applications-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border: none;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.9rem;
+  }
+
+  .applications-table td:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.4rem;
+  }
+
+  .button,
+  .pagination-btn {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+
+  .view-toggle .button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .applications-table td {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .application-title {
+    font-size: 1.1rem;
+  }
+
+  .application-card {
+    padding: 16px;
+  }
+
+  form {
+    gap: 12px;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  input[type="number"] {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    width: 100%;
   }
 }

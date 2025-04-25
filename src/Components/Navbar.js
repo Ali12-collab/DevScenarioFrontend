@@ -7,18 +7,18 @@ const Navbar = () => (
     <div className="navbar-container">
       <a href="/" className="navbar-logo">Ali's Dev Scenario</a>
       <ul className="navbar-links">
-        {['About Us', 'Featured', 'Testimonials'].map((text, index) => (
+        {['Applications', 'Status Levels', 'Inquiries'].map((text, index) => (
           <li key={index}>
             {/* Routing logic for each link */}
-            {text === 'About Us' ? (
+            {text === 'Applications' ? (
               <Link to="/applications" className="navbar-link">
                 {text}
               </Link>
-            ) : text === 'Featured' ? (
+            ) : text === 'Status Levels' ? (
               <Link to="/status" className="navbar-link">
                 {text}
               </Link>
-            ) : text === 'Testimonials' ? (
+            ) : text === 'Inquiries' ? (
               <Link to="/inquiries" className="navbar-link">
                 {text}
               </Link>

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
+
+.footer-container {
+  margin-top: 10px;
+  width: 100%;
+  padding: 20px 0;
+  background-color: whitesmoke; /* fallback color */
+  color: black;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.primary-text {
+  font-size: 0.875rem; /* text-sm */
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.footer-text {
+  margin: 5px 0;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+/* -------------------------------
+   Responsive Adjustments
+-------------------------------- */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 16px 10px;
+  }
+
+  .primary-text {
+    font-size: 0.82rem;
+  }
+
+  .footer-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 12px 8px;
+  }
+
+  .primary-text {
+    font-size: 0.8rem;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+  }
+}
